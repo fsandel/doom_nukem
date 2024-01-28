@@ -24,7 +24,11 @@ MEMORY_FILES	=	collector.c ft_malloc.c garbage.c
 
 PLAYER			=	$(addprefix $(PLAYER_DIR), $(PLAYER_FILES))
 PLAYER_DIR		=	src/player/
-PLAYER_FILES	=	access.c
+PLAYER_FILES	=	player_access.c
+
+WINDOW			=	$(addprefix $(WINDOW_DIR), $(WINDOW_FILES))
+WINDOW_DIR		=	src/window/
+WINDOW_FILES	=	window_access.c
 
 
 # HUD				=	$(addprefix $(HUD_DIR), $(HUD_FILES))
@@ -60,7 +64,7 @@ PLAYER_FILES	=	access.c
 # HDR_FILES		=	cub3D.h design.h
 # HDR_INCLUDE		=	-I $(HDR_DIR)
 
-ALL_SRC			=	$(SRC) $(MEMORY) $(PLAYER) #$(PARSER) $(UTILS) $(MATH) $(WALLS) $(HUD) $(ENEMIES) $(WEAPON) $(FREE)
+ALL_SRC			=	$(SRC) $(MEMORY) $(PLAYER) $(WINDOW) #$(PARSER) $(UTILS) $(MATH) $(WALLS) $(HUD) $(ENEMIES) $(WEAPON) $(FREE)
 
 ################################################################################
 ################################################################################

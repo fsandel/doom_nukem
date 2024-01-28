@@ -5,6 +5,7 @@
 
 #include "./memory/collector.h"
 #include "./memory/ft_malloc.h"
+#include "./window/window_access.h"
 
 void f1()
 {
@@ -32,7 +33,11 @@ int main()
   initCollector();
   t_player *player = initPlayer();
   if (!player)
-    return 1;
+    return (clearCollector(), 1);
+
+  t_window *window = initWindow();
+  if (!window)
+    return (clearCollector(), 1);
   char *test = ft_malloc(1, free);
   (void)test;
   clearCollector();
