@@ -7,7 +7,7 @@
 
 void *ft_malloc(size_t size, void (*freeFunc)(void *))
 {
-  t_list *collector = getCollector();
+  t_collector *collector = getCollector();
   void *ptr = malloc(size);
   if (!ptr)
     return NULL;
@@ -16,6 +16,6 @@ void *ft_malloc(size_t size, void (*freeFunc)(void *))
   gb->obj = ptr;
   gb->freeGarbage = freeFunc;
 
-  ft_lstadd_back(&collector, ft_lstnew(gb));
+  ft_lstadd_back(&collector->list, ft_lstnew(gb));
   return ptr;
 }

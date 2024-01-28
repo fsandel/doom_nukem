@@ -1,38 +1,41 @@
+#include "stdlib.h"
+
 #include "libft.h"
 
 #include "garbage.h"
+#include "collector.h"
 
-t_list *storeCollector(t_list *list)
+static t_collector *storeCollector(t_collector *c)
 {
-  static t_list *storedList = NULL;
+  static t_collector *collector = NULL;
 
-  if (list)
-    storedList = list;
+  if (c)
+  {
+    collector = c;
+    collector->list = NULL;
+  }
 
-  return storedList;
+  return collector;
 }
 
-t_list *getCollector(void)
+t_collector *getCollector(void)
 {
   return storeCollector(NULL);
 }
 
 void clearCollector(void)
 {
-  t_list *list = getCollector();
+  t_collector *collector = getCollector();
 
-  ft_lstclear(&list, freeGarbage);
+  ft_lstclear(&collector->list, freeGarbage);
+  free(collector);
 }
 
-t_list *initCollector(void)
+void initCollector(void)
 {
-  t_list *list = storeCollector(ft_lstnew(NULL));
-
-  if (!list)
+  if (!storeCollector(malloc(sizeof(t_collector))))
   {
     ft_putendl_fd("Fatal: failed to initiate Collector", 2);
     exit(1);
   }
-
-  return list;
 }

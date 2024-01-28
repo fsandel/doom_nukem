@@ -3,8 +3,13 @@
 
 #include "libft.h"
 
-t_list *getCollector(void);
-t_list *initCollector(void);
+typedef struct s_collector
+{
+  t_list *list;
+} t_collector;
+
+t_collector *getCollector(void);
+void initCollector(void);
 void clearCollector(void);
 
 #endif // MEMORY_COLLECTOR_H
