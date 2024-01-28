@@ -38,8 +38,7 @@ int main()
   t_window *window = initWindow();
   if (!window)
     return (clearCollector(), 1);
-  char *test = ft_malloc(1, free);
-  (void)test;
+  sleep(2);
   clearCollector();
   return 0;
 }

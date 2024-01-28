@@ -1,4 +1,4 @@
-NAME			=	doom_nukem
+NAME			=	doom-nukem
 
 CC				=	cc
 CFLAGS			=	-Wall -Wextra -g -Ofast -Werror
