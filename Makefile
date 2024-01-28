@@ -18,6 +18,10 @@ SRC_FILES		=	main.c #utils.c keyboard_input.c doors.c movement.c start_end_scree
 # PARSER_DIR		=	src/parser/
 # PARSER_FILES	=	parser.c validate_args.c validate_map.c parse_options.c check_syntax.c validate_options.c handle_errors.c parser_init.c
 
+PLAYER			=	$(addprefix $(PLAYER_DIR), $(PLAYER_FILES))
+PLAYER_DIR		=	src/player/
+PLAYER_FILES	=	access.c
+
 # HUD				=	$(addprefix $(HUD_DIR), $(HUD_FILES))
 # HUD_DIR			=	src/hud/
 # HUD_FILES		=	hud.c minimap.c minimap_fov_border.c minimap_enemies.c
@@ -51,7 +55,7 @@ SRC_FILES		=	main.c #utils.c keyboard_input.c doors.c movement.c start_end_scree
 # HDR_FILES		=	cub3D.h design.h
 # HDR_INCLUDE		=	-I $(HDR_DIR)
 
-ALL_SRC			=	$(SRC) #$(PARSER) $(UTILS) $(MATH) $(WALLS) $(HUD) $(ENEMIES) $(WEAPON) $(FREE)
+ALL_SRC			=	$(SRC) $(PLAYER) #$(PARSER) $(UTILS) $(MATH) $(WALLS) $(HUD) $(ENEMIES) $(WEAPON) $(FREE)
 
 ################################################################################
 ################################################################################
