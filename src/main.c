@@ -1,6 +1,10 @@
 #include "stdio.h"
+#include "libft.h"
 
 #include "player/player.h"
+
+#include "./memory/collector.h"
+#include "./memory/ft_malloc.h"
 
 void f1()
 {
@@ -25,12 +29,12 @@ void f3()
 
 int main()
 {
+  initCollector();
   t_player *player = initPlayer();
   if (!player)
     return 1;
-
-  f1();
-  f2();
-  f3();
+  char *test = ft_malloc(1, free);
+  (void)test;
+  clearCollector();
   return 0;
 }

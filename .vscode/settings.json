@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "charconv": "c",
+    "player.h": "c",
+    "memory.h": "c",
+    "garbage.h": "c"
+  }
+}

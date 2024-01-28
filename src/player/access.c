@@ -1,5 +1,7 @@
 #include "stdlib.h"
 
+#include "../memory/ft_malloc.h"
+
 #include "player.h"
 
 t_player *storePlayer(t_player *player)
@@ -21,7 +23,7 @@ t_player *initPlayer(void)
 {
   t_player *player;
 
-  player = malloc(sizeof(t_player));
+  player = ft_malloc(sizeof(t_player), free);
   if (!player)
     return NULL;
 
