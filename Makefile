@@ -30,41 +30,20 @@ WINDOW			=	$(addprefix $(WINDOW_DIR), $(WINDOW_FILES))
 WINDOW_DIR		=	src/window/
 WINDOW_FILES	=	window_access.c
 
+MENU			=	$(addprefix $(MENU_DIR), $(MENU_FILES))
+MENU_DIR		=	src/menu/
+MENU_FILES		=	menu_item.c menu.c
 
-# HUD				=	$(addprefix $(HUD_DIR), $(HUD_FILES))
-# HUD_DIR			=	src/hud/
-# HUD_FILES		=	hud.c minimap.c minimap_fov_border.c minimap_enemies.c
-
-# UTILS			=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
-# UTILS_DIR		=	src/utils/
-# UTILS_FILES		=	vector.c utils.c colors.c map.c
-
-# MATH			=	$(addprefix $(MATH_DIR), $(MATH_FILES))
-# MATH_DIR		=	src/math/
-# MATH_FILES		=	distance.c rotate.c misc.c
-
-# WALLS			=	$(addprefix $(WALLS_DIR), $(WALLS_FILES))
-# WALLS_DIR		=	src/walls/
-# WALLS_FILES		=	raycasting.c textures.c fog.c
-
-# ENEMIES			=	$(addprefix $(ENEMIES_DIR), $(ENEMIES_FILES))
-# ENEMIES_DIR		=	src/enemies/
-# ENEMIES_FILES	=	enemies.c enemy_draw.c enemy_movement.c enemy_state.c enemy_utils.c enemy_setup.c enemy_attack.c enemy_load_png.c standard_values.c
-
-# WEAPON			=	$(addprefix $(WEAPON_DIR), $(WEAPON_FILES))
-# WEAPON_DIR		=	src/weapon/
-# WEAPON_FILES	=	weapon_clear.c weapon_draw.c player_attack.c weapon_utils.c weapon_details.c
-
-# FREE			=	$(addprefix $(FREE_DIR), $(FREE_FILES))
-# FREE_DIR		=	src/free/
-# FREE_FILES		=	free_utils.c free_utils2.c free_enemy_textures.c
+TEXTURE			=	$(addprefix $(TEXTURE_DIR), $(TEXTURE_FILES))
+TEXTURE_DIR		=	src/texture/
+TEXTURE_FILES	=	ft_load_png.c
 
 # HDR				=	$(addprefix $(HDR_DIR), $(HDR_FILES))
 # HDR_DIR			=	include/
 # HDR_FILES		=	cub3D.h design.h
 # HDR_INCLUDE		=	-I $(HDR_DIR)
 
-ALL_SRC			=	$(SRC) $(MEMORY) $(PLAYER) $(WINDOW) #$(PARSER) $(UTILS) $(MATH) $(WALLS) $(HUD) $(ENEMIES) $(WEAPON) $(FREE)
+ALL_SRC			=	$(SRC) $(MEMORY) $(PLAYER) $(WINDOW) $(MENU) $(TEXTURE)
 
 ################################################################################
 ################################################################################

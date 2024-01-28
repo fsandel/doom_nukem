@@ -6,26 +6,25 @@
 #include "./memory/collector.h"
 #include "./memory/ft_malloc.h"
 #include "./window/window_access.h"
+#include "menu/menu.h"
 
-void f1()
+void key_function(mlx_key_data_t keydata, void *)
 {
-  t_player *player = getPlayer();
+  switch (keydata.key)
+  {
+  case MLX_KEY_ESCAPE:
+    exit(0);
+    break;
+  // case MLX_KEY_ENTER:
+  //   drawMenu(getMainMenu());
+  //   break;
+  case MLX_KEY_SPACE:
+    printf("UP\n");
+    break;
 
-  player->nb = 1;
-}
-
-void f2()
-{
-  t_player *player = getPlayer();
-
-  player->nb = 2;
-}
-
-void f3()
-{
-  t_player *player = getPlayer();
-
-  printf("nb: %d\n", player->nb);
+  default:
+    break;
+  }
 }
 
 int main()
@@ -38,7 +37,9 @@ int main()
   t_window *window = initWindow();
   if (!window)
     return (clearCollector(), 1);
-  sleep(2);
+  drawMenu(getMainMenu());
+  mlx_key_hook(window->mlx, key_function, player);
+  mlx_loop(window->mlx);
   clearCollector();
   return 0;
 }

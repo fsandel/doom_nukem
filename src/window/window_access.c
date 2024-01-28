@@ -38,6 +38,15 @@ t_window *initWindow(void)
     return NULL;
 
   window->mlx = mlx_init(400, 400, "doom-nukem", true);
+  window->menu_layer = mlx_new_image(window->mlx, 400, 400);
+  mlx_image_to_window(window->mlx, window->menu_layer, 0, 0);
+  mlx_set_instance_depth(window->menu_layer->instances, MENU_LAYER);
+  window->menu_layer_active = mlx_new_image(window->mlx, 400, 400);
+  mlx_image_to_window(window->mlx, window->menu_layer_active, 0, 0);
+  mlx_set_instance_depth(window->menu_layer_active->instances, MENU_LAYER + 1);
+  window->menu_layer_active2 = mlx_new_image(window->mlx, 400, 400);
+  mlx_image_to_window(window->mlx, window->menu_layer_active2, 0, 0);
+  mlx_set_instance_depth(window->menu_layer_active2->instances, MENU_LAYER - 1);
   storeWindow(window);
   return window;
 }
