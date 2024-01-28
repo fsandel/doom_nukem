@@ -4,3 +4,6 @@
 [submodule "lib/libft"]
 	path = lib/libft
 	url = https://github.com/fsandel/libft.git
+[submodule "lib/LeakSanitizer"]
+	path = lib/LeakSanitizer
+	url = git@github.com:mhahnFr/LeakSanitizer.git
