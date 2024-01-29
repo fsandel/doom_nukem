@@ -37,8 +37,7 @@ int main()
   t_window *window = initWindow();
   if (!window)
     return (clearCollector(), 1);
-  drawMenu(getMainMenu());
-  mlx_key_hook(window->mlx, key_function, player);
+  activateMainMenu(getMainMenu());
   mlx_loop(window->mlx);
   clearCollector();
   return 0;

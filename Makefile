@@ -38,12 +38,16 @@ TEXTURE			=	$(addprefix $(TEXTURE_DIR), $(TEXTURE_FILES))
 TEXTURE_DIR		=	src/texture/
 TEXTURE_FILES	=	ft_load_png.c
 
+GRAFICS			=	$(addprefix $(GRAFICS_DIR), $(GRAFICS_FILES))
+GRAFICS_DIR		=	src/grafics/
+GRAFICS_FILES = grafics_utils.c
+
 # HDR				=	$(addprefix $(HDR_DIR), $(HDR_FILES))
 # HDR_DIR			=	include/
 # HDR_FILES		=	cub3D.h design.h
 # HDR_INCLUDE		=	-I $(HDR_DIR)
 
-ALL_SRC			=	$(SRC) $(MEMORY) $(PLAYER) $(WINDOW) $(MENU) $(TEXTURE)
+ALL_SRC			=	$(SRC) $(MEMORY) $(PLAYER) $(WINDOW) $(MENU) $(TEXTURE) $(GRAFICS)
 
 ################################################################################
 ################################################################################

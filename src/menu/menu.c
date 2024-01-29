@@ -6,6 +6,8 @@
 #include "stdio.h"
 #include "../texture/ft_load_png.h"
 #include "../memory/ft_malloc.h"
+#include "../grafics/grafics_utils.h"
+#include "./menu_item.h"
 
 void testFunction()
 {
@@ -41,80 +43,49 @@ t_menu *getMainMenu()
   return menu;
 }
 
-void drawTextureToImage(mlx_texture_t *texture, mlx_image_t *image, int x, int y)
+void menuKeyFunction(mlx_key_data_t keydata, void *param)
 {
-  for (uint32_t i = 0; i < texture->height; i++)
+  t_menu *menu = (t_menu *)param;
+  if (keydata.action != MLX_PRESS)
+    return;
+  switch (keydata.key)
   {
-    for (uint32_t j = 0; j < texture->width; j++)
-    {
-
-      mlx_put_pixel(image, x + j, y + i, ((int *)texture->pixels)[i * texture->width + j]);
-    }
+  case MLX_KEY_UP:
+    menu->selected = (menu->selected - 1) % menu->size;
+    if (menu->selected < 0)
+      menu->selected = menu->size - 1;
+    drawMenu(menu);
+    break;
+  case MLX_KEY_DOWN:
+    menu->selected = (menu->selected + 1) % menu->size;
+    drawMenu(menu);
+    break;
+  case MLX_KEY_ENTER:
+    menu->items[menu->selected].action();
+    break;
+  case MLX_KEY_ESCAPE:
+    exit(0);
+    break;
+  default:
+    break;
   }
-}
-
-void drawMenuElement(t_menu_item item, int y)
-{
-  t_window *window = getWindow();
-  int x = (window->mlx->width - item.texture->width) / 2;
-  // mlx_texture_to_image(item.texture, window->menu_layer);
-  drawTextureToImage(item.texture, window->menu_layer, x, y);
-  printf("x: %d, y: %d\n", x, y);
-  // mlx_image_to_window(window->mlx, img, x, y)
-  // mlx_delete_image(window->mlx, img);
-}
-
-// void key_function(mlx_key_data_t keydata, void *)
-// {
-//   switch (keydata.key)
-//   {
-//   case MLX_KEY_ESCAPE:
-//     exit(0);
-//     break;
-//   // case MLX_KEY_ENTER:
-//   //   drawMenu(getMainMenu());
-//   //   break;
-//   case MLX_KEY_SPACE:
-//     printf("UP\n");
-//     break;
-
-//   default:
-//     break;
-//   }
-// }
-
-void drawSelected(t_menu *)
-{
-  t_window *window = getWindow();
-  mlx_image_to_window(window->mlx, window->menu_layer_active, 0, 0);
-  mlx_image_to_window(window->mlx, window->menu_layer_active2, 0, 0);
 }
 
 void drawMenu(t_menu *menu)
 {
-  t_window *window = getWindow();
-  for (int i = 0; i < menu->size; i++)
+  printf("Drawing menu\n");
+  clearImage(getWindow()->menu_layer);
+  clearImage(getWindow()->menu_layer_active);
+  for (int element = 0; element < menu->size; element++)
   {
-    drawMenuElement(menu->items[i], i * 40 + 50);
-    if (i == menu->selected)
-    {
-      drawTextureToImage(menu->selected_texture, window->menu_layer_active, 150, 50);
-      drawTextureToImage(menu->selected_texture, window->menu_layer_active2, 150, 50);
-      // drawTextureToImage(menu->items[2].texture, window->menu_layer_active2, 150, 50);
-      printf("Drawing selected texture\n");
-      for (uint32_t i = 0; i < menu->selected_texture->height; i++)
-      {
-        for (uint32_t j = 0; j < menu->selected_texture->width; j++)
-        {
-          if (i < 10 || i > menu->selected_texture->height - 10 || j < 10 || j > menu->selected_texture->width - 10)
-            mlx_put_pixel(window->menu_layer_active, 150 + j, 50 + i, 0xff0000ff);
-        }
-      }
-    }
+    drawMenuElement(menu->items[element], element * 40 + 50);
+    if (element == menu->selected)
+      drawMenuBorder(menu);
   }
 }
 
-// void activateMainMenu(t_menu *menu)
-// {
-//   dr
-// }
+void activateMainMenu(t_menu *menu)
+{
+  mlx_key_hook(getWindow()->mlx, menuKeyFunction, menu);
+  drawMenu(menu);
+}

@@ -2,12 +2,11 @@
 #define MENU_MENU_ITEM_H
 
 #include "MLX42.h"
+#include "menu.h"
 
-typedef struct s_menu_item
-{
-  char name[30];
-  void (*action)(void);
-  mlx_texture_t *texture;
-} t_menu_item;
+#include "menu_struct.h"
+
+void drawMenuElement(t_menu_item item, int y);
+void drawMenuBorder(t_menu *menu);
 
 #endif // MENU_MENU_ITEM_H
