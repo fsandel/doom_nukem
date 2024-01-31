@@ -9,7 +9,7 @@ typedef struct s_window
   mlx_t *mlx;
   mlx_image_t *menu_layer;
   mlx_image_t *menu_layer_active;
-  mlx_image_t *menu_layer_active2;
+  mlx_image_t *img;
 } t_window;
 
 t_window *getWindow(void);
