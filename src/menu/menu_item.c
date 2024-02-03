@@ -1,6 +1,7 @@
 #include "../window/window_access.h"
 #include "menu_struct.h"
 #include "../grafics/grafics_utils.h"
+#include "../ft_put.pixel.h"
 
 void drawMenuElement(t_menu_item item, int y)
 {
@@ -17,7 +18,7 @@ void drawMenuBorder(t_menu *menu)
     for (uint32_t j = 0; j < menu->selected_texture->width; j++)
     {
       if (i < 5 || i > menu->selected_texture->height - 5 || j < 5 || j > menu->selected_texture->width - 5)
-        mlx_put_pixel(window->menu_layer_active, 150 + j, i + menu->selected * 40 + 50, 0xff0000ff);
+        ft_put_pixel(window->menu_layer_active, 150 + j, i + menu->selected * 40 + 50, 0xff0000ff);
     }
   }
 }

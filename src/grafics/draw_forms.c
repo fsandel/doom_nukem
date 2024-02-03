@@ -2,6 +2,7 @@
 #include "MLX42.h"
 #include "math.h"
 #include "stdlib.h"
+#include "../ft_put.pixel.h"
 
 void drawCircle(mlx_image_t *img, t_vector2_int position, int radius, int color)
 {
@@ -13,7 +14,7 @@ void drawCircle(mlx_image_t *img, t_vector2_int position, int radius, int color)
     {
       if (x * x + y2 <= radius2)
       {
-        mlx_put_pixel(img, position.x + x, position.y + y, color);
+        ft_put_pixel(img, position.x + x, position.y + y, color);
       }
     }
   }
@@ -25,7 +26,7 @@ void drawSquare(mlx_image_t *img, t_vector2_int position, int size, int color)
   {
     for (int x = 0; x < size; x++)
     {
-      mlx_put_pixel(img, position.x + x, position.y + y, color);
+      ft_put_pixel(img, position.x + x, position.y + y, color);
     }
   }
 }
@@ -36,7 +37,7 @@ void drawRectangle(mlx_image_t *img, t_vector2_int position, int width, int heig
   {
     for (int x = 0; x < width; x++)
     {
-      mlx_put_pixel(img, position.x + x, position.y + y, color);
+      ft_put_pixel(img, position.x + x, position.y + y, color);
     }
   }
 }
@@ -52,7 +53,7 @@ void drawLine(mlx_image_t *img, t_vector2_int start, t_vector2_int end, int colo
   float y = start.y;
   for (int i = 0; i <= steps; i++)
   {
-    mlx_put_pixel(img, x, y, color);
+    ft_put_pixel(img, x, y, color);
     x += xInc;
     y += yInc;
   }

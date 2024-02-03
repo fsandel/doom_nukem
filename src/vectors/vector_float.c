@@ -1,7 +1,7 @@
-#include "vector_int.h"
+#include "vector_float.h"
 #include <math.h>
 
-void normalizeVectorInt(t_vector2_int *vector)
+void normalizeVectorFloat(t_vector2_float *vector)
 {
   float x = vector->x;
   float y = vector->y;
@@ -10,7 +10,7 @@ void normalizeVectorInt(t_vector2_int *vector)
   vector->y = y / length;
 }
 
-void turnVectorByAngleInt(t_vector2_int *vector, float angle)
+void turnVectorByAngleFloat(t_vector2_float *vector, float angle)
 {
   float x = vector->x;
   float y = vector->y;

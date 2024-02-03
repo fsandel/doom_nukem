@@ -1,8 +1,8 @@
 NAME			=	doom-nukem
 
 CC				=	cc
-CFLAGS			=	-Wall -Wextra -g -Ofast -Werror
-LINKFLAGS		=
+CFLAGS			=	-Wall -Wextra -g -Ofast -Werror #-fsanitize=address 
+LINKFLAGS		= #-fsanitize=address -g
 REDIRECT		=	2> /dev/null 1> /dev/null
 OS				=	$(shell uname -s)
 BREW			=	$(HOME)/.brew
@@ -12,7 +12,7 @@ BREW			=	$(HOME)/.brew
 
 SRC				=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 SRC_DIR			=	src/
-SRC_FILES		=	main.c #utils.c keyboard_input.c doors.c movement.c start_end_screen.c endcondition.c setup.c setup_player.c sound.c
+SRC_FILES		=	main.c ft_put_pixel.c #utils.c keyboard_input.c doors.c movement.c start_end_screen.c endcondition.c setup.c setup_player.c sound.c
 
 # PARSER			=	$(addprefix $(PARSER_DIR), $(PARSER_FILES))
 # PARSER_DIR		=	src/parser/
@@ -44,7 +44,7 @@ GRAFICS_FILES = grafics_utils.c draw_forms.c
 
 VECTORS			=	$(addprefix $(VECTORS_DIR), $(VECTORS_FILES))
 VECTORS_DIR		=	src/vectors/
-VECTORS_FILES	=	vector_int.c
+VECTORS_FILES	=	vector_int.c vector_float.c
 
 # HDR				=	$(addprefix $(HDR_DIR), $(HDR_FILES))
 # HDR_DIR			=	include/

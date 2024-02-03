@@ -1,5 +1,6 @@
 #include "grafics_utils.h"
 #include "MLX42.h"
+#include "../ft_put.pixel.h"
 
 void drawTextureToImage(mlx_texture_t *texture, mlx_image_t *image, int x, int y)
 {
@@ -7,7 +8,7 @@ void drawTextureToImage(mlx_texture_t *texture, mlx_image_t *image, int x, int y
   {
     for (uint32_t j = 0; j < texture->width; j++)
     {
-      mlx_put_pixel(image, x + j, y + i, ((int *)texture->pixels)[i * texture->width + j]);
+      ft_put_pixel(image, x + j, y + i, ((int *)texture->pixels)[i * texture->width + j]);
     }
   }
 }
